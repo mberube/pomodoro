@@ -40,6 +40,8 @@ GEM
       rack (>= 1.0.1)
     gem_plugin (0.2.3)
     i18n (0.4.1)
+    jquery-rails (0.2.4)
+      rails (~> 3.0)
     mail (2.2.7)
       activesupport (>= 2.3.6)
       mime-types
@@ -124,6 +126,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  jquery-rails
   mongrel
   omniauth
   pg
