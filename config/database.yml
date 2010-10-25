@@ -11,10 +11,10 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: pomodoro_development
+  database: pomodoro_dev
   pool: 5
   username: pomodoro
-  password:
+  password: 123456
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -40,7 +40,7 @@ test:
   database: pomodoro_test
   pool: 5
   username: pomodoro
-  password:
+  password: 123456
 
 production:
   adapter: postgresql
@@ -48,4 +48,4 @@ production:
   database: pomodoro_production
   pool: 5
   username: pomodoro
-  password:
+  password: 123456
