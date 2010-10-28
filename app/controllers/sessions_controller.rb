@@ -8,5 +8,7 @@ class SessionsController < ApplicationController
     end
     # Log the authorizing user in.
     self.current_user = @auth.user
+
+    redirect_to :controller=>:pomodoros, :action=>:index
 	end
 end
