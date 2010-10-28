@@ -9,6 +9,7 @@ gem 'mongrel'
 gem 'pg'
 gem 'omniauth'
 gem 'jquery-rails'
+gem 'haml'
 
 # Use unicorn as the web server
 # gem 'unicorn'
