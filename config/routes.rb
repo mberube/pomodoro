@@ -13,6 +13,7 @@ Pomodoro::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   resources :sessions
+  resources :pomodoros
 
   # Sample resource route with options:
   #   resources :products do
