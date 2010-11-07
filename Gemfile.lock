@@ -33,6 +33,7 @@ GEM
       activesupport (~> 3.0.0)
     builder (2.1.2)
     daemons (1.0.10)
+    diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     faraday (0.4.6)
@@ -114,6 +115,18 @@ GEM
     rake (0.8.7)
     rest-client (1.6.1)
       mime-types (>= 1.16)
+    rspec (2.0.1)
+      rspec-core (~> 2.0.1)
+      rspec-expectations (~> 2.0.1)
+      rspec-mocks (~> 2.0.1)
+    rspec-core (2.0.1)
+    rspec-expectations (2.0.1)
+      diff-lcs (>= 1.1.2)
+    rspec-mocks (2.0.1)
+      rspec-core (~> 2.0.1)
+      rspec-expectations (~> 2.0.1)
+    rspec-rails (2.0.1)
+      rspec (~> 2.0.0)
     ruby-openid (2.1.8)
     ruby-openid-apps-discovery (1.2.0)
       ruby-openid (>= 2.1.7)
@@ -133,3 +146,5 @@ DEPENDENCIES
   omniauth
   pg
   rails (= 3.0.1)
+  rspec
+  rspec-rails

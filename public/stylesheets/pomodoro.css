@@ -1,0 +1,11 @@
+#timer {
+    font-size:150px;
+}
+
+.error {
+    background-color: red;
+}
+
+.warning {
+    background-color: yellow;
+}
