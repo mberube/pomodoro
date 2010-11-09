@@ -13,3 +13,11 @@ body {
 .warning {
     background-color: yellow;
 }
+
+.hidden {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
