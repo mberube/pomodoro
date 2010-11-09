@@ -6,7 +6,23 @@ class PomodorosController < ApplicationController
   end
 
   def new
+    if current_user == nil
+      @remaining_time = Pomodoro.pomodoro_time_in_millis
+      return
+    end
+    pomodoro = Pomodoro.active_pomodoro(current_user)
+    puts "active pomodoro is #{pomodoro}"
 
+    if(pomodoro == nil)
+      pomodoro = Pomodoro.new
+      pomodoro.user = current_user
+      pomodoro.start_time = Time.now
+      pomodoro.save
+    end
+
+
+    @remaining_time = pomodoro.remaining_time_in_millis
+    puts "remaining pomodoro time = #{@remaining_time}"
   end
 
 private
