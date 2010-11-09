@@ -1,6 +1,20 @@
+function getMethods(obj) {
+  var result = [];
+  for (var id in obj) {
+    try {
+      if (typeof(obj[id]) == "function") {
+        result.push(id + ": " + obj[id].toString());
+      }
+    } catch (err) {
+      result.push(id + ": inaccessible");
+    }
+  }
+  return result;
+}
+
 window.onload = function()
 {
-    var timeInterval = 25*60*1000
+    var timeInterval = parseInt(jQuery.trim($('#init-value').text()))
     //var timeInterval = 3*1000
     var endTime = new Date(new Date().getTime() + timeInterval)
     tick(endTime)
