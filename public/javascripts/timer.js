@@ -1,6 +1,7 @@
 window.onload = function()
 {
     var timeInterval = 25*60*1000
+    //var timeInterval = 3*1000
     var endTime = new Date(new Date().getTime() + timeInterval)
     tick(endTime)
 }
@@ -23,6 +24,7 @@ function tick(endTime)
         setTimeout(nextTick, 100)
     } else {
         // TODO play sound
+        $('#finished').removeClass('hidden').addClass('visible')
     }
 }
 
