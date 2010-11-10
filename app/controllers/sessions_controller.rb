@@ -1,4 +1,10 @@
 class SessionsController < ApplicationController
+  def index
+    if session[:user_id] != nil
+      redirect_to :controller=>:pomodoros
+    end
+  end
+
 	def create
     auth = request.env['rack.auth']
     unless @auth = Authorization.find_from_hash(auth)
