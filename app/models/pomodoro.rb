@@ -15,6 +15,7 @@ class Pomodoro < ActiveRecord::Base
   end
 
   def self.pomodoro_time_in_millis
-    25*60*1000
+    #25*60*1000
+    10*1000
   end
 end
