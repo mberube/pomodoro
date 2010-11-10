@@ -1,3 +1,19 @@
 %p Welcome!
 
+Previous pomodoros:
+%table
+  %th Start time
+  %th finished?
+  %th success?
+  - @pomodoros.each do |pomodoro|
+    %tr
+      %td
+        =pomodoro.start_time.localtime
+      %td
+        =pomodoro.finished
+
+      %td
+        =pomodoro.success
+
+
 = link_to 'Start a new pomodoro', new_pomodoro_url
