@@ -16,5 +16,10 @@ class SessionsController < ApplicationController
     self.current_user = @auth.user
 
     redirect_to :controller=>:pomodoros, :action=>:index
-	end
+  end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to sessions_url
+  end
 end

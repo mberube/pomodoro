@@ -1,5 +1,7 @@
 PomodoroPlanner::Application.routes.draw do
 	match '/auth/:provider/callback', :to => 'sessions#create'
+
+  match '/logout', :to => 'sessions#destroy'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
