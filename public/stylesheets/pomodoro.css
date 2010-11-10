@@ -1,9 +1,10 @@
 body {
-    background-color: #71DFFF;
+    background-color: #66CCFF;
 }
 
 #timer {
-    font-size:150px;
+    font-size:20em;
+    text-align: center;
 }
 
 .error {
