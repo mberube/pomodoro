@@ -17,4 +17,14 @@ class Pomodoro < ActiveRecord::Base
   def self.pomodoro_time_in_millis
     25*60*1000
   end
+
+  def displayed_start_time
+    start_time.strftime("%Y-%m-%d %H:%M:%S")
+  end
+
+  def state
+    return "In Progress" unless finished
+    return "Cancelled" unless success
+    "Finished"
+  end
 end
