@@ -1,25 +1,4 @@
- #content {
-     padding-left: 5em;
-     padding-right: 5em;
- }
-
-#header {
-    padding-bottom: 1em;
-    border-bottom: 2px solid;
-    margin: auto;
-}
-
-#title {
-    font-size: 2em;
-    font-weight: bold;
-}
-
-#caption {
-    font-size: 1.5em;
-    margin-left: 20px;
-}
-
-#description {
+ #description {
     margin-top: 50px;
 
 }

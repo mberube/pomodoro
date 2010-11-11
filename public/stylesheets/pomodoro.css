@@ -2,6 +2,38 @@ body {
     font-size: 1em;
 }
 
+#content {
+     padding-left: 5em;
+     padding-right: 5em;
+ }
+
+#header {
+    padding-bottom: 1em;
+    border-bottom: 2px solid;
+    margin: auto;
+    position: relative;
+    height: 70px;
+}
+
+#title {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#caption {
+    font-size: 1.5em;
+    margin-left: 20px;
+}
+
+#logo {
+    float:left;
+}
+
+#menu {
+    float:right;
+    text-align: right;
+}
+
 #timer {
     font-size:20em;
     text-align: center;

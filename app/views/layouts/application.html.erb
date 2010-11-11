@@ -17,7 +17,27 @@
    <% end %>
  <% end %>
 
-<%= yield %>
+<div id="content">
+  <div id="header">
+    <div id="logo">
+        <div id="title">
+          Pomodoro Kitchen
+        </div>
+        <div id="caption">
+          Organize your time
+        </div>
+    </div>
+    <% if signed_in? %>
+        <div id="menu">
+          Welcome <%= current_user.name %>
+          <br/><%= link_to "Logout", '/logout' %>
+        </div>
+    <% end %>
+
+  </div>
+  <%= yield %>
+</div>
+
 
 </body>
 </html>
