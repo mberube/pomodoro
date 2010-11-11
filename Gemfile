@@ -10,6 +10,7 @@ gem 'pg'
 gem 'omniauth'
 gem 'jquery-rails'
 gem 'haml'
+gem 'less'
 
 # Use unicorn as the web server
 # gem 'unicorn'
