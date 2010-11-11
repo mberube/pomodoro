@@ -1,25 +1,27 @@
 - content_for(:head) do
   = stylesheet_link_tag('home/home.css')
 
-#title
-  Pomodoro Kitchen
-
-#caption
-  Organize your time
-
-#description
-  The Pomodoro Technique is a method to manage your time. See more info at the official
-  = link_to "web site", "http://www.pomodorotechnique.com/"
-
-
 #content
-  #free
-    Try the technique with a simple timer
-    .p
-      =link_to "Use the timer without logging in.", new_pomodoro_url
+  #header
+    #title
+      Pomodoro Kitchen
 
-  #manage
-    .p We aim to provide a way to manage your pomodoros.
-    .p
-      = link_to "Log in using your google account", "/auth/google"
-      and try what we have to offer.
+    #caption
+      Organize your time
+
+  #description
+    The Pomodoro Technique is a method to manage your time. See more info at the official
+    = link_to "web site", "http://www.pomodorotechnique.com/"
+
+
+  #content
+    #free
+      Try the technique with a simple timer
+      .p
+        =link_to "Use the timer without logging in.", new_pomodoro_url
+
+    #manage
+      .p We aim to provide a way to manage your pomodoros.
+      .p
+        = link_to "Log in using your google account", "/auth/google"
+        and try what we have to offer.

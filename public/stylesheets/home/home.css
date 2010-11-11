@@ -1,3 +1,14 @@
+ #content {
+     padding-left: 5em;
+     padding-right: 5em;
+ }
+
+#header {
+    padding-bottom: 1em;
+    border-bottom: 2px solid;
+    margin: auto;
+}
+
 #title {
     font-size: 2em;
     font-weight: bold;
@@ -17,18 +28,16 @@
     margin-top: 50px;
     padding-left: 50px;
     padding-right: 50px;
-    color: white;
 }
+
 #free {
     float: right;
     width: 45%;
     height: 200px;
-    background-color: #057d9f;
 }
 
 #manage {
     float: left;
     width: 45%;
     height: 200px;
-    background-color: #057d9f;
 }
