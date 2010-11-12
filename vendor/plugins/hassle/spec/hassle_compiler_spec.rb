@@ -11,7 +11,7 @@ describe Hassle::Compiler do
       File.join(Dir.pwd, "tmp", "hassle", "stylesheets")
 
     @hassle.css_location("./public/css/compiled").should ==
-      File.join(Dir.pwd, "tmp", "hassle", "css")
+      File.join(Dir.pwd, "tmp", "hassle", "css", "compiled")
 
     @hassle.css_location("./public/styles/posts/sass").should ==
       File.join(Dir.pwd, "tmp", "hassle", "styles", "posts")
@@ -49,56 +49,106 @@ describe Hassle::Compiler do
       sass.should be_compiled
     end
 
-    it "should compile sass if template location is a hash" do
-      new_location = "public/css/sass"
-      Sass::Plugin.options[:template_location] = {new_location => "public/css"}
-      sass = write_sass(new_location)
+    it "should compile sass if template location is not specified" do
+      template_directory = "public/stylesheets/sass"
+      output_directory = "public/stylesheets"
+      Sass::Plugin.options[:template_location] = nil
+      sass_template = write_sass(template_directory)
+      template_name = File.basename(sass_template)
 
       @hassle.compile
 
-      sass.should be_compiled
+      css_location = @hassle.css_location(template_directory)
+      css_file = @hassle.css_location(File.join(output_directory, File.basename(sass_template)))
+      css_file.should be_compiled
+    end
+
+    it "should compile sass if template location is a hash" do
+      template_directory = "public/css/sass"
+      output_directory = "public/css"
+      Sass::Plugin.options[:template_location] = {template_directory => output_directory}
+      sass_template = write_sass(template_directory)
+      template_name = File.basename(sass_template)
+
+      @hassle.compile
+
+      css_location = @hassle.css_location(template_directory)
+      css_file = @hassle.css_location(File.join(output_directory, File.basename(sass_template)))
+      css_file.should be_compiled
+
+      @hassle.stylesheets.should == ['/css/screen.css']
     end
 
     it "should compile sass if template location is a hash with multiple locations" do
-      location_one = "public/css/sass"
-      location_two = "public/stylesheets/sass"
-      Sass::Plugin.options[:template_location] = {location_one => "public/css", location_two => "public/css"}
-      sass_one = write_sass(location_one, "one")
-      sass_two = write_sass(location_two, "two")
+      template_directory_one = "public/css/sass"
+      output_directory_one = 'public/css'
+      template_directory_two = "public/stylesheets/sass"
+      output_directory_two = 'public/css'
+      Sass::Plugin.options[:template_location] = {template_directory_one => output_directory_one, template_directory_two => output_directory_two}
+      sass_one = write_sass(template_directory_one, "one")
+      sass_two = write_sass(template_directory_two, "two")
 
       @hassle.compile
 
-      sass_one.should be_compiled
-      sass_two.should be_compiled
-      @hassle.stylesheets.should have_tmp_dir_removed(sass_one, sass_two)
+      css_location = @hassle.css_location(template_directory_one)
+      css_file = @hassle.css_location(File.join(output_directory_one, File.basename(sass_one)))
+      css_file.should be_compiled
+
+      css_location = @hassle.css_location(template_directory_two)
+      css_file = @hassle.css_location(File.join(output_directory_two, File.basename(sass_two)))
+      css_file.should be_compiled
+
+      @hassle.stylesheets.each do |s|
+        ["/css/one.css", "/css/two.css"].should include(s)
+      end
     end
 
     it "should compile sass if template location is an array with multiple locations" do
-      location_one = "public/css/sass"
-      location_two = "public/stylesheets/sass"
-      Sass::Plugin.options[:template_location] = [[location_one, "public/css"], [location_two, "public/css"]]
-      sass_one = write_sass(location_one, "one")
-      sass_two = write_sass(location_two, "two")
+      template_directory_one = "public/css/sass"
+      output_directory_one = 'public/css'
+      template_directory_two = "public/stylesheets/sass"
+      output_directory_two = 'public/css'
+      Sass::Plugin.options[:template_location] = [[template_directory_one, output_directory_one], [template_directory_two, output_directory_two]]
+      sass_one = write_sass(template_directory_one, "one")
+      sass_two = write_sass(template_directory_two, "two")
 
       @hassle.compile
 
-      sass_one.should be_compiled
-      sass_two.should be_compiled
-      @hassle.stylesheets.should have_tmp_dir_removed(sass_one, sass_two)
+      css_location = @hassle.css_location(template_directory_one)
+      css_file = @hassle.css_location(File.join(output_directory_one, File.basename(sass_one)))
+      css_file.should be_compiled
+
+      css_location = @hassle.css_location(template_directory_two)
+      css_file = @hassle.css_location(File.join(output_directory_two, File.basename(sass_two)))
+      css_file.should be_compiled
+
+      @hassle.stylesheets.each do |s|
+        ["/css/one.css", "/css/two.css"].should include(s)
+      end
     end
 
     it "should not overwrite similarly name files in different directories" do
-      location_one = "public/css/sass"
-      location_two = "public/stylesheets/sass"
-      Sass::Plugin.options[:template_location] = {location_one => "public/css", location_two => "public/css"}
-      sass_one = write_sass(location_one, "screen")
-      sass_two = write_sass(location_two, "screen")
+      template_directory_one = "public/css/sass"
+      output_directory_one = 'public/css'
+      template_directory_two = "public/stylesheets/sass"
+      output_directory_two = 'public/css'
+      Sass::Plugin.options[:template_location] = [[template_directory_one, output_directory_one], [template_directory_two, output_directory_two]]
+      sass_one = write_sass(template_directory_one, "screen")
+      sass_two = write_sass(template_directory_two, "screen")
 
       @hassle.compile
 
-      sass_one.should be_compiled
-      sass_two.should be_compiled
-      @hassle.stylesheets.should have_tmp_dir_removed(sass_one, sass_two)
+      css_location = @hassle.css_location(template_directory_one)
+      css_file = @hassle.css_location(File.join(output_directory_one, File.basename(sass_one)))
+      css_file.should be_compiled
+
+      css_location = @hassle.css_location(template_directory_two)
+      css_file = @hassle.css_location(File.join(output_directory_two, File.basename(sass_two)))
+      css_file.should be_compiled
+
+      @hassle.stylesheets.each do |s|
+        ["/css/screen.css", "/css/screen.css"].should include(s)
+      end
     end
   end
 end

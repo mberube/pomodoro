@@ -2,6 +2,8 @@ h1. Hassle
 
 Making "SASS":http://sass-lang.com/ less of a hassle on read only filesystems. (like "Heroku":http://heroku.com)
 
+IMPORTANT: This is for rails 3. If you want hassle for rails 2, then you should use "the original one":http://github.com/pedro/hassle 
+
 h2. Install
 
 Get it from "Gemcutter.":http://gemcutter.org
