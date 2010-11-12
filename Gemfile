@@ -5,12 +5,12 @@ gem 'rails', '3.0.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mongrel'
 gem 'pg'
 gem 'omniauth'
 gem 'jquery-rails'
 gem 'haml'
-gem 'hassle'
+gem 'hassle', :require=>false
+#gem 'daemons', '1.1.0'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -31,6 +31,7 @@ gem 'hassle'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
  group :development, :test do
+  gem 'mongrel'
   gem 'rspec-rails'
   gem 'webrat'
  end
