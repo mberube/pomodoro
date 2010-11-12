@@ -10,11 +10,16 @@ And /^I have a file "(.*)" with:$/ do |path, content|
 end
 
 Then /^I should see the following in "(.*)":$/ do |path, content|
-  content.strip.should == File.read(File.join(TEST_DIR, path)).strip
+  fullpath = File.join(TEST_DIR, path)
+  content.strip.should == File.read(fullpath).strip
 end
 
-When /^Hassle is installed as a plugin$/ do
-  FileUtils.cp_r(ORIGINAL_DIR, File.join(TEST_DIR, "vendor", "plugins", "hassle"))
+When /^Hassle is installed as a gem, via bundler$/ do
+  FileUtils.mkdir_p( File.join(TEST_DIR, "vendor", "gems"))
+  FileUtils.cp_r(ORIGINAL_DIR, File.join(TEST_DIR, "vendor", "gems", "hassle"))
+  open(File.join(TEST_DIR,'Gemfile'), 'a') do |f|
+    f << 'gem "hassle", :path => "vendor/gems/hassle"'
+  end
 end
 
 When /^the Rails app is initialized in "(.*)" mode$/ do |environment|

@@ -1,7 +1,7 @@
 require 'fileutils'
 
 ORIGINAL_DIR = Dir.pwd
-TEST_DIR = File.join('/', 'tmp', 'hassle')
+TEST_DIR = File.join('/', 'tmp', 'hassle_cuc')
 
 Before do
   FileUtils.mkdir(TEST_DIR)
