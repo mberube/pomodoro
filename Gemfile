@@ -9,8 +9,6 @@ gem 'pg'
 gem 'omniauth'
 gem 'jquery-rails'
 gem 'haml'
-gem 'hassle', :require=>false
-#gem 'daemons', '1.1.0'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -33,4 +31,5 @@ gem 'hassle', :require=>false
  group :development, :test do
   gem 'rspec-rails'
   gem 'webrat'
+  gem 'mongrel'
  end
