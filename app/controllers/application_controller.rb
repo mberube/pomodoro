@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :set_timezone
 
   protected
 
@@ -16,5 +17,20 @@ class ApplicationController < ActionController::Base
   def current_user=(user)
     @current_user = user
     session[:user_id] = user.id
+  end
+
+  # The browsers give the # of minutes that a local time needs to add to
+  # make it UTC, while TimeZone expects offsets in seconds to add to
+  # a UTC to make it local.
+  def browser_timezone
+    return nil if cookies[:tzoffset].blank?
+    @browser_timezone ||= begin
+      min = cookies[:tzoffset].to_i
+      ActiveSupport::TimeZone[-min.minutes]
+    end
+  end
+
+  def set_timezone
+    Time.zone = browser_timezone
   end
 end
