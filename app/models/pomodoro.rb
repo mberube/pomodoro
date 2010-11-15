@@ -19,6 +19,7 @@ class Pomodoro < ActiveRecord::Base
   end
 
   def displayed_start_time
+    puts "timezone = #{Time.zone}"
     start_time.strftime("%Y-%m-%d %H:%M:%S")
   end
 
