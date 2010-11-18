@@ -4,14 +4,16 @@
 Pomodoro in progress...
 
 - if @running_pomodoro_detected
-  %br Remaining time reflects an old pomodoro
+  .warning Remaining time reflects an old pomodoro
 
 #timer
   #init-value{:class => 'hidden'}
     = @remaining_time
 
+=link_to "Cancel this pomodoro", cancel_pomodoro_url(@pomodoro)
+
 #finished{:class => 'hidden'}
-  Pomodoro finished, to you want to
+  Pomodoro finished, do you want to
   - if @pomodoro != nil
     =link_to "start a new one?", close_pomodoro_url(@pomodoro)
   - else

@@ -18,6 +18,7 @@ PomodoroPlanner::Application.routes.draw do
   resources :pomodoros do
     member do
       get 'close'
+      get 'cancel'
     end
   end
   #match '/pomodoros/close', :to => 'pomodoros#close'

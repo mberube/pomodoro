@@ -25,10 +25,22 @@ class PomodorosController < ApplicationController
 
   def close
     pomodoro = Pomodoro.active_pomodoro(current_user)
-    pomodoro.finished = true unless pomodoro == nil
+    redirect_to :new_pomodoro if pomodoro == nil
+    pomodoro.finished = true
     pomodoro.success = true
     pomodoro.save
     redirect_to :new_pomodoro
+  end
+
+  def cancel
+    pomodoro = Pomodoro.active_pomodoro(current_user)
+    redirect_to :controller=>:pomodoros, :action=>:index if pomodoro == nil
+
+    pomodoro.finished = true
+    pomodoro.success = false
+    pomodoro.save
+    redirect_to :controller=>:pomodoros, :action=>:index
+
   end
 
 private
