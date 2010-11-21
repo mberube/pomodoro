@@ -42,7 +42,7 @@ class PomodorosController < ApplicationController
     redirect_to :controller=>:pomodoros, :action=>:index
   end
 
-  def internalinterruption
+  def internal_interruption
     pomodoro = Pomodoro.active_pomodoro(current_user)
     pomodoro.internal_interruptions += 1
     pomodoro.save
@@ -50,7 +50,7 @@ class PomodorosController < ApplicationController
     redirect_to :controller=>:pomodoros, :action=>:new
   end
 
-  def externalinterruption
+  def external_interruption
     pomodoro = Pomodoro.active_pomodoro(current_user)
     pomodoro.external_interruptions += 1
     pomodoro.save
