@@ -1,16 +1,17 @@
 - content_for(:head) do
   = stylesheet_link_tag('pomodoro/pomodoro.less', :rel=>'stylesheet/less', :type=>'text/css')
 
-Previous pomodoros:
-%table
-  %th Start time
-  %th State
-  - @pomodoros.each do |pomodoro|
-    %tr
-      %td
-        =pomodoro.displayed_start_time
-      %td
-        =pomodoro.state
+- if !@pomodoros.empty?
+  Previous pomodoros:
+  %table
+    %th Start time
+    %th State
+    - @pomodoros.each do |pomodoro|
+      %tr
+        %td
+          =pomodoro.displayed_start_time
+        %td
+          =pomodoro.state
 
 
 = link_to 'Start a new pomodoro', new_pomodoro_url

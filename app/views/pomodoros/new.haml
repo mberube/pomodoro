@@ -10,7 +10,16 @@ Pomodoro in progress...
   #init-value{:class => 'hidden'}
     = @remaining_time
 
-=link_to "Cancel this pomodoro", cancel_pomodoro_url(@pomodoro)
+=link_to "Cancel this pomodoro", cancel_pomodoro_path(@pomodoro)
+#interruptions
+  #internal-interruptions
+    =link_to "Internal interruption", "/pomodoros/internalinterruption"
+    Current=
+    =@pomodoro.internal_interruptions
+  #external-interruptions
+    =link_to "External interruption", "/pomodoros/externalinterruption"
+    Current=
+    =@pomodoro.external_interruptions
 
 #finished{:class => 'hidden'}
   Pomodoro finished, do you want to

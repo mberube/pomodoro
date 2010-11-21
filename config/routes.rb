@@ -15,13 +15,15 @@ PomodoroPlanner::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   resources :sessions
+
+  match '/pomodoros/internalinterruption', :to => 'pomodoros#internalinterruption'
+  match '/pomodoros/externalinterruption', :to => 'pomodoros#externalinterruption'
   resources :pomodoros do
     member do
       get 'close'
       get 'cancel'
     end
   end
-  #match '/pomodoros/close', :to => 'pomodoros#close'
 
   # Sample resource route with options:
   #   resources :products do
