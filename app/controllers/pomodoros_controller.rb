@@ -40,7 +40,22 @@ class PomodorosController < ApplicationController
     pomodoro.success = false
     pomodoro.save
     redirect_to :controller=>:pomodoros, :action=>:index
+  end
 
+  def internalinterruption
+    pomodoro = Pomodoro.active_pomodoro(current_user)
+    pomodoro.internal_interruptions += 1
+    pomodoro.save
+    # TODO use ajax instead
+    redirect_to :controller=>:pomodoros, :action=>:new
+  end
+
+  def externalinterruption
+    pomodoro = Pomodoro.active_pomodoro(current_user)
+    pomodoro.external_interruptions += 1
+    pomodoro.save
+    # TODO use ajax instead
+    redirect_to :controller=>:pomodoros, :action=>:new
   end
 
 private
