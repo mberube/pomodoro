@@ -1,8 +1,16 @@
 class Pomodoro < ActiveRecord::Base
   belongs_to :user
 
+  def self.sorted_pomodoros(user_id)
+    self.find(:all, :order => :start_time)
+  end
+
   def self.active_pomodoro(user_id)
     Pomodoro.where(["user_id = ? AND finished = ?", user_id, false]).first
+  end
+
+  def self.pomodoro_time_in_millis
+    25*60*1000
   end
 
   def remaining_time_in_millis
@@ -12,10 +20,6 @@ class Pomodoro < ActiveRecord::Base
       return 0
     end
     time_in_millis
-  end
-
-  def self.pomodoro_time_in_millis
-    25*60*1000
   end
 
   def displayed_start_time

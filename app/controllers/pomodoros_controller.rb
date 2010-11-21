@@ -2,7 +2,7 @@ class PomodorosController < ApplicationController
   before_filter :require_login, :except=>[:new]
 
   def index
-    @pomodoros = Pomodoro.find_all_by_user_id(current_user)
+    @pomodoros = Pomodoro.sorted_pomodoros(current_user)
   end
 
   def new

@@ -50,4 +50,19 @@ describe Pomodoro do
       @pomodoro.state.should == "Cancelled"
     end
   end
+
+  it "should find all pomodoros sorted by time" do
+    now = Time.now
+    future = 1.minute.from_now
+    past = 30.seconds.ago
+
+    p1 = Pomodoro.new(:user=>@user, :start_time=>future).save
+    p2 = Pomodoro.new(:user=>@user, :start_time=>past).save
+    p3 = Pomodoro.new(:user=>@user, :start_time=>now).save
+
+    @pomodoros = Pomodoro.sorted_pomodoros(@user.id)
+    @pomodoros.size.should == 3
+    @pomodoros[0].start_time.to_i.should == past.to_i
+    @pomodoros[2].start_time.to_i.should == future.to_i
+  end
 end
