@@ -6,12 +6,18 @@
   %table
     %th Start time
     %th State
+    %th Internal Interruptions
+    %th External Interruptions
     - @pomodoros.each do |pomodoro|
       %tr
         %td
           =pomodoro.displayed_start_time
         %td
           =pomodoro.state
+        %td
+          =pomodoro.internal_interruptions
+        %td
+          =pomodoro.external_interruptions
 
 
 = link_to 'Start a new pomodoro', new_pomodoro_url
