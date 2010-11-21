@@ -13,13 +13,15 @@ Pomodoro in progress...
 =link_to "Cancel this pomodoro", cancel_pomodoro_path(@pomodoro)
 #interruptions
   #internal-interruptions
-    =link_to "Internal interruption", "/pomodoros/internalinterruption"
+    =link_to "Internal interruption", internal_interruption_pomodoro_path(@pomodoro), :method => :put
     Current=
     =@pomodoro.internal_interruptions
   #external-interruptions
-    =link_to "External interruption", "/pomodoros/externalinterruption"
+    =link_to "External interruption", external_interruption_pomodoro_path(@pomodoro), :method => :put
     Current=
     =@pomodoro.external_interruptions
+
+
 
 #finished{:class => 'hidden'}
   Pomodoro finished, do you want to
