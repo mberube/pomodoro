@@ -34,7 +34,7 @@
     </div>
     <% if signed_in? %>
         <div id="menu">
-          Welcome <%= current_user.name %>
+          Welcome <%= link_to current_user.name, pomodoros_url %>
           <br/><%= link_to "Logout", '/logout' %>
         </div>
     <% end %>
