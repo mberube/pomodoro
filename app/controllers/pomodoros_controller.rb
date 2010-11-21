@@ -14,9 +14,7 @@ class PomodorosController < ApplicationController
     @running_pomodoro_detected = @pomodoro != nil
 
     if(@pomodoro == nil)
-      @pomodoro = Pomodoro.new
-      @pomodoro.user = current_user
-      @pomodoro.start_time = Time.now
+      @pomodoro = Pomodoro.new(:user=>current_user, :start_time=>Time.now)
       @pomodoro.save
     end
 
