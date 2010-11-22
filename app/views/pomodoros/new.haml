@@ -1,5 +1,6 @@
 - content_for(:head) do
   = javascript_include_tag('timer.js')
+  = stylesheet_link_tag('pomodoro/timer.less', :rel=>'stylesheet/less', :type=>'text/css')
 
 Pomodoro in progress...
 
@@ -10,18 +11,20 @@ Pomodoro in progress...
   #init-value{:class => 'hidden'}
     = @remaining_time
 
+
+.interruptions
+  .internal-interruptions
+    =link_to "My mind wanders", internal_interruption_pomodoro_path(@pomodoro), :method => :put
+    %br
+      Count =
+      =@pomodoro.internal_interruptions
+  .external-interruptions
+    =link_to "Others keep bugging me", external_interruption_pomodoro_path(@pomodoro), :method => :put
+    %br
+      Count =
+      =@pomodoro.external_interruptions
+
 =link_to "Cancel this pomodoro", cancel_pomodoro_path(@pomodoro)
-#interruptions
-  #internal-interruptions
-    =link_to "Internal interruption", internal_interruption_pomodoro_path(@pomodoro), :method => :put
-    Current=
-    =@pomodoro.internal_interruptions
-  #external-interruptions
-    =link_to "External interruption", external_interruption_pomodoro_path(@pomodoro), :method => :put
-    Current=
-    =@pomodoro.external_interruptions
-
-
 
 #finished{:class => 'hidden'}
   Pomodoro finished, do you want to
