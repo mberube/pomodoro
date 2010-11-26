@@ -12,23 +12,24 @@ Pomodoro in progress...
     = @remaining_time
 
 
-.interruptions
-  .internal-interruptions
-    =link_to "My mind wanders", internal_interruption_pomodoro_path(@pomodoro), :method => :put
-    %br
-      Count =
-      =@pomodoro.internal_interruptions
-  .external-interruptions
-    =link_to "Others keep bugging me", external_interruption_pomodoro_path(@pomodoro), :method => :put
-    %br
-      Count =
-      =@pomodoro.external_interruptions
+- if signed_in?
+  .interruptions
+    .internal-interruptions
+      =link_to "My mind wanders", internal_interruption_pomodoro_path(@pomodoro), :method => :put
+      %br
+        Count =
+        =@pomodoro.internal_interruptions
+    .external-interruptions
+      =link_to "Others keep bugging me", external_interruption_pomodoro_path(@pomodoro), :method => :put
+      %br
+        Count =
+        =@pomodoro.external_interruptions
 
-=link_to "Cancel this pomodoro", cancel_pomodoro_path(@pomodoro)
+  =link_to "Cancel this pomodoro", cancel_pomodoro_path(@pomodoro)
 
 #finished{:class => 'hidden'}
   Pomodoro finished, do you want to
-  - if @pomodoro != nil
+  - if signed_in?
     =link_to "start a new one?", close_pomodoro_url(@pomodoro)
   - else
     =link_to "start a new one?", new_pomodoro_url
