@@ -5,3 +5,4 @@ tmp/**/*
 .idea
 public/stylesheets/*.css
 public/stylesheets/**/*.css
+config/initializers/secret_token.rb
