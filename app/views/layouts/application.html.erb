@@ -6,7 +6,7 @@
   <%= javascript_include_tag 'jquery-cookie' %>
   <%= javascript_include_tag('pomodoro/init_timezone.js') %>
 
-  <link rel="stylesheet/less" href="/stylesheets/pomodoro-kitchen.less" type="text/css">
+  <link rel="stylesheet/less" href="/stylesheets/pomodoro.less" type="text/css">
 
   <%= csrf_meta_tag %>
   <%= yield :head %>
@@ -41,6 +41,10 @@
 
   </div>
   <%= yield %>
+</div>
+
+<div id="footer">
+  This application was made for fun, no garantees but if you see something wrong, <%= link_to "notify us", "mailto:pomodoro-assistant@gmail.com"%>
 </div>
 
 
