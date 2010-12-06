@@ -1,6 +1,8 @@
 - content_for(:head) do
+  = javascript_include_tag('jplayer/jquery.jplayer.min.js')
   = javascript_include_tag('timer.js')
   = stylesheet_link_tag('pomodoro/timer.less', :rel=>'stylesheet/less', :type=>'text/css')
+
 
 Pomodoro in progress...
 
@@ -10,6 +12,8 @@ Pomodoro in progress...
 #timer
   #init-value{:class => 'hidden'}
     = @remaining_time
+
+#jplayer
 
 
 - if signed_in?
