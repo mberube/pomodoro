@@ -37,8 +37,15 @@ function tick(endTime)
         }
         setTimeout(nextTick, 100)
     } else {
-        // TODO play sound
         $('#finished').removeClass('hidden').addClass('visible')
+
+        $("#jplayer").jPlayer( {
+            ready: function () {
+              this.element.jPlayer("setFile", "/sounds/beep.mp3").jPlayer("play")
+            },
+            swfPath: "/sounds",
+            preload: "auto"
+        });
     }
 }
 
