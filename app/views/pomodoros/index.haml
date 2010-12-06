@@ -1,5 +1,5 @@
 - content_for(:head) do
-  = stylesheet_link_tag('pomodoro/pomodoro.less', :rel=>'stylesheet/less', :type=>'text/css')
+  = stylesheet_link_tag('pomodoro/pomodoro-assistant.less', :rel=>'stylesheet/less', :type=>'text/css')
 
 - if !@pomodoros.empty?
   Previous pomodoros:
@@ -18,6 +18,5 @@
           =pomodoro.internal_interruptions
         %td
           =pomodoro.external_interruptions
-
 
 = link_to 'Start a new pomodoro', new_pomodoro_url
