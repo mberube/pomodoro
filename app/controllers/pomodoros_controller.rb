@@ -11,6 +11,13 @@ class PomodorosController < ApplicationController
       return
     end
     @pomodoro = Pomodoro.active_pomodoro(current_user)
+    if @pomodoro.time_elapsed?
+      # reset pomodoro
+      @pomodoro.finished = true
+      @pomodoro.success = true
+      @pomodoro.save
+      @pomodoro = nil
+    end
     @running_pomodoro_detected = @pomodoro != nil
 
     if(@pomodoro == nil)
