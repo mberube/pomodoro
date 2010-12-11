@@ -2,7 +2,7 @@ class Pomodoro < ActiveRecord::Base
   belongs_to :user
 
   def self.sorted_pomodoros(user_id)
-    self.find(:all, :order => :start_time)
+    self.order("start_time DESC").find(:all, :limit=>20)
   end
 
   def self.active_pomodoro(user_id)
