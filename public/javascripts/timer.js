@@ -15,7 +15,6 @@ function getMethods(obj) {
 window.onload = function()
 {
     var timeInterval = parseInt(jQuery.trim($('#init-value').text()))
-    //var timeInterval = 3*1000
     var endTime = new Date(new Date().getTime() + timeInterval)
     tick(endTime)
 }

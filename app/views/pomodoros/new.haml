@@ -17,17 +17,15 @@ Pomodoro in progress...
 
 
 - if signed_in?
-  .interruptions
-    .internal-interruptions
-      =link_to "My mind wanders", internal_interruption_pomodoro_path(@pomodoro), :method => :put
-      %br
-        Count =
-        =@pomodoro.internal_interruptions
-    .external-interruptions
-      =link_to "Others keep bugging me", external_interruption_pomodoro_path(@pomodoro), :method => :put
-      %br
-        Count =
-        =@pomodoro.external_interruptions
+  #interruptions
+    #internal-interruptions
+      =link_to "My mind wanders", internal_interruption_pomodoro_path(@pomodoro), :method => :put, :remote=>true
+      #count
+        =pluralize(@pomodoro.internal_interruptions, "interruption")
+    #external-interruptions
+      =link_to "Others keep bugging me", external_interruption_pomodoro_path(@pomodoro), :method => :put, :remote=>true
+      #count
+        =pluralize(@pomodoro.external_interruptions, "interruption")
 
   =link_to "Cancel this pomodoro", cancel_pomodoro_path(@pomodoro)
 
