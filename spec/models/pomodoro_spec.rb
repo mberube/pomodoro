@@ -60,9 +60,14 @@ describe Pomodoro do
     p2 = Pomodoro.new(:user=>@user, :start_time=>past).save
     p3 = Pomodoro.new(:user=>@user, :start_time=>now).save
 
-    @pomodoros = Pomodoro.sorted_pomodoros(@user.id)
-    @pomodoros.size.should == 3
-    @pomodoros[0].start_time.to_i.should == past.to_i
-    @pomodoros[2].start_time.to_i.should == future.to_i
+    pomodoros = Pomodoro.sorted_pomodoros(@user.id)
+    pomodoros.size.should == 3
+    pomodoros[0].start_time.to_i.should == past.to_i
+    pomodoros[2].start_time.to_i.should == future.to_i
+  end
+
+  it "should be considered finished if there is no remaining time" do
+    pomodoro = Pomodoro.new(:user=>@user, :start_time=>30.minutes.ago)
+    pomodoro.time_elapsed?.should == true
   end
 end

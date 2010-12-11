@@ -32,4 +32,8 @@ class Pomodoro < ActiveRecord::Base
     return "Cancelled" unless success
     "Finished"
   end
+
+  def time_elapsed?
+    remaining_time_in_millis <= 0
+  end
 end

@@ -15,9 +15,6 @@ gem 'haml'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'ruby-debug'
-
 # Bundle the extra gems:
 # gem 'bj'
 # gem 'nokogiri'
@@ -30,6 +27,14 @@ gem 'haml'
 group :development, :test do
   gem 'rspec-rails'
   gem 'webrat'
+end
+
+group :development do
+  # To use debugger
+  gem 'ruby-debug19'
+  gem 'ruby-debug-ide19'
+
+  gem 'mongrel'
 end
 
 group :development, :production do
