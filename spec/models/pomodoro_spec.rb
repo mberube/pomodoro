@@ -51,7 +51,7 @@ describe Pomodoro do
     end
   end
 
-  it "should find all pomodoros sorted by time" do
+  it "should find all pomodoros sorted by time (most recent first)" do
     now = Time.now
     future = 1.minute.from_now
     past = 30.seconds.ago
@@ -62,8 +62,8 @@ describe Pomodoro do
 
     pomodoros = Pomodoro.sorted_pomodoros(@user.id)
     pomodoros.size.should == 3
-    pomodoros[0].start_time.to_i.should == past.to_i
-    pomodoros[2].start_time.to_i.should == future.to_i
+    pomodoros[0].start_time.to_i.should == future.to_i
+    pomodoros[2].start_time.to_i.should == past.to_i
   end
 
   it "should be considered finished if there is no remaining time" do

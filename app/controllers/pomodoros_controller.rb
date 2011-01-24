@@ -11,7 +11,8 @@ class PomodorosController < ApplicationController
       return
     end
     @pomodoro = Pomodoro.active_pomodoro(current_user)
-    if @pomodoro.time_elapsed?
+
+    if @pomodoro && @pomodoro.time_elapsed?
       # reset pomodoro
       @pomodoro.finished = true
       @pomodoro.success = true
