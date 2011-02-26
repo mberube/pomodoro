@@ -75,6 +75,8 @@ GEM
       rails (~> 3.0)
     json (1.4.6)
     json_pure (1.4.6)
+    kaminari (0.10.4)
+      rails (>= 3.0.0)
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
@@ -206,6 +208,7 @@ DEPENDENCIES
   database_cleaner
   haml
   jquery-rails
+  kaminari
   launchy
   mongrel
   omniauth

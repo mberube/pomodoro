@@ -8,6 +8,7 @@ gem 'rails', '3.0.3'
 gem 'omniauth'
 gem 'jquery-rails'
 gem 'haml'
+gem 'kaminari'
 
 # Use unicorn as the web server
 # gem 'unicorn'
