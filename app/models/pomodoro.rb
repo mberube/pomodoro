@@ -1,10 +1,6 @@
 class Pomodoro < ActiveRecord::Base
   belongs_to :user
 
-  def self.sorted_pomodoros(user_id)
-    self.order("start_time DESC").find(:all, :limit=>20)
-  end
-
   def self.active_pomodoro(user_id)
     Pomodoro.where(["user_id = ? AND finished = ?", user_id, false]).first
   end

@@ -1,9 +1,9 @@
-@table_color: #D1DBD8;
+@table-color: #D1DBD8;
 
 td {
-    border-right: 1px solid @table_color;
+    border-right: 1px solid @table-color;
 	//border-bottom: 1px solid @table_color;
-	border-top: 1px solid @table_color;
+	border-top: 1px solid @table-color;
     padding-left: 1em;
     padding-right: 1em;
 }
@@ -11,3 +11,12 @@ td {
 #start {
     padding: 20px;
 }
+
+@pagination-color: #000000;
+@pagination-padding: 2px 5px 2px 5px;
+.pagination { padding: 3px; margin: 3px; }
+.pagination a { padding: @pagination-padding; margin: 2px; border: 1px solid #aaaadd; text-decoration: none; color: @pagination-color; }
+.pagination a:hover,
+.pagination a:active { border: 1px solid @pagination-color; color: #000; }
+.pagination span.current { padding: @pagination-padding; margin: 2px; border: 1px solid @pagination-color; font-weight: bold; background-color: @pagination-color; color: #FFF; }
+.pagination span.disabled { padding: @pagination-padding; margin: 2px; border: 1px solid #eee; color: #ddd; }
