@@ -2,7 +2,8 @@ class PomodorosController < ApplicationController
   before_filter :require_login, :except=>[:new]
 
   def index
-    @pomodoros = Pomodoro.order("created_at desc").page(params[:page]).per(10)
+    puts "show pomodoros for #{current_user.id}"
+    @pomodoros = Pomodoro.where(:user_id=>current_user.id).order("created_at desc").page(params[:page]).per(10)
   end
 
   def new
@@ -59,6 +60,15 @@ class PomodorosController < ApplicationController
     @pomodoro.external_interruptions += 1
     @pomodoro.save
   end
+
+  def statistics
+    success = Pomodoro.where(:user_id=>current_user.id, :success=>true).count
+    total = Pomodoro.where(:user_id=>current_user.id).count
+
+    @stats = {}
+    @stats[:all_time] = {:success=>success, :failures=>(total-success)}
+  end
+
 
 private
   def require_login

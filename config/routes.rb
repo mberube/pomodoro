@@ -2,6 +2,7 @@ PomodoroPlanner::Application.routes.draw do
 	match '/auth/:provider/callback', :to => 'sessions#create'
 
   match '/logout', :to => 'sessions#destroy'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -20,10 +21,16 @@ PomodoroPlanner::Application.routes.draw do
     member do
       get 'close'
       get 'cancel'
-      put 'internal_interruption'
-      put 'external_interruption'
+      get 'statistics'
+      get 'internal_interruption'
+      get 'external_interruption'
+    end
+
+    collection do
+      get 'statistics'
     end
   end
+
 
   # Sample resource route with options:
   #   resources :products do
