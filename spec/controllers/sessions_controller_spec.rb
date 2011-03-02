@@ -7,7 +7,7 @@ describe SessionsController do
   end
 
   it "should redirect to pomodoros if user is logged in" do
-    login_as_test_user
+    login_as_user_id(1)
     get :index
     response.should redirect_to(pomodoros_path)
   end

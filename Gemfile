@@ -9,6 +9,7 @@ gem 'omniauth'
 gem 'jquery-rails'
 gem 'haml'
 gem 'kaminari'
+gem 'gchartrb'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -48,5 +49,7 @@ group :development, :production do
 end
 group :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
+  # webrat is required for rspec for the have_selector method (among other)
+  gem 'webrat'
 end
 

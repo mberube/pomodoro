@@ -26,6 +26,38 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 end
 
-def login_as_test_user
-  session[:user_id] = 1
+def login_as_user_id(id)
+  session[:user_id] = id
 end
+
+def add_pomodoro_for_user_id(id)
+  pomodoro = Pomodoro.new(:user_id=>id, :start_time=>Time.now)
+  pomodoro.save()
+end
+
+def create_pomodoro_array(count)
+    pomodoros = []
+    # inject total methods for kaminari
+    pomodoros.instance_eval <<-EVAL
+      def total_count
+        [count, 10].min
+      end
+
+      def current_page
+        1
+      end
+
+      def num_pages
+        count/10
+      end
+
+      def   limit_value
+        10
+      end
+    EVAL
+
+    count.times do
+      pomodoros << Pomodoro.new(:user_id=>1, :start_time=>Time.now)
+    end
+    pomodoros
+  end

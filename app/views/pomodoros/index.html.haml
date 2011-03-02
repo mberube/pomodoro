@@ -1,0 +1,29 @@
+- content_for(:head) do
+  = stylesheet_link_tag('pomodoro/pomodoro.less', :rel=>'stylesheet/less', :type=>'text/css')
+
+
+
+- if @pomodoros.total_count != 0
+  = paginate @pomodoros
+  .pomodoro-history
+    %table
+      %th Start time
+      %th State
+      %th Internal Interruptions
+      %th External Interruptions
+      - @pomodoros.each do |pomodoro|
+        %tr
+          %td
+            =pomodoro.displayed_start_time
+          %td
+            =pomodoro.state
+          %td
+            =pomodoro.internal_interruptions
+          %td
+            =pomodoro.external_interruptions
+  = link_to t('statistics'), statistics_pomodoros_url
+- else
+  = t("pomodoros_not_found")
+
+#start
+  = link_to 'Start a new pomodoro', new_pomodoro_url

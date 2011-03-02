@@ -1,8 +1,9 @@
+require 'google_chart'
+
 class PomodorosController < ApplicationController
   before_filter :require_login, :except=>[:new]
 
   def index
-    puts "show pomodoros for #{current_user.id}"
     @pomodoros = Pomodoro.where(:user_id=>current_user.id).order("created_at desc").page(params[:page]).per(10)
   end
 
@@ -64,9 +65,14 @@ class PomodorosController < ApplicationController
   def statistics
     success = Pomodoro.where(:user_id=>current_user.id, :success=>true).count
     total = Pomodoro.where(:user_id=>current_user.id).count
+    failures = total - success
 
-    @stats = {}
-    @stats[:all_time] = {:success=>success, :failures=>(total-success)}
+    lc = GoogleChart::PieChart.new('380x200', "All Time (#{help.pluralize(total, "pomodoro")})", true) do |pc|
+      pc.data t("success"), success, '00ff00'
+      pc.data t("failures"), failures, 'ff0000'
+    end
+    @all_time_graph = lc.to_url
+
   end
 
 
