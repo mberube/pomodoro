@@ -2,4 +2,8 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  success: "Success"
+  failures: "Failures"
+  pomodoros_not_found: "No Pomodoros Found"
+  statistics: "Statistics"
+

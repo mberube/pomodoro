@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.0.4'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -8,6 +8,8 @@ gem 'rails', '3.0.3'
 gem 'omniauth'
 gem 'jquery-rails'
 gem 'haml'
+gem 'kaminari'
+gem 'gchartrb'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -27,8 +29,8 @@ gem 'haml'
 group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'cucumber-rails'
-  gem 'cucumber'
+  #gem 'cucumber-rails'
+  #gem 'cucumber'
   gem 'rspec-rails'
   gem 'spork'
   gem 'launchy'
@@ -47,5 +49,7 @@ group :development, :production do
 end
 group :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
+  # webrat is required for rspec for the have_selector method (among other)
+  gem 'webrat'
 end
 

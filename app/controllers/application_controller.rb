@@ -5,14 +5,15 @@ class ApplicationController < ActionController::Base
   protected
 
   def current_user
-    @current_user ||= User.find_by_id(session[:user_id])
+     user_id = session[:user_id]
+     @current_user ||= User.find_by_id(user_id)
   end
 
   def signed_in?
     !!current_user
   end
 
-  helper_method :current_user, :signed_in?
+  helper_method :current_user, :signed_in?, :require_login
 
   def current_user=(user)
     @current_user = user
@@ -33,4 +34,14 @@ class ApplicationController < ActionController::Base
   def set_timezone
     Time.zone = browser_timezone
   end
+
+  def help
+    Helper.instance
+  end
+
+  class Helper
+    include Singleton
+    include ActionView::Helpers::TextHelper
+  end
+
 end

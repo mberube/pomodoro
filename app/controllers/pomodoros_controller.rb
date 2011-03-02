@@ -1,8 +1,10 @@
+require 'google_chart'
+
 class PomodorosController < ApplicationController
   before_filter :require_login, :except=>[:new]
 
   def index
-    @pomodoros = Pomodoro.sorted_pomodoros(current_user)
+    @pomodoros = Pomodoro.where(:user_id=>current_user.id).order("created_at desc").page(params[:page]).per(10)
   end
 
   def new
@@ -59,6 +61,20 @@ class PomodorosController < ApplicationController
     @pomodoro.external_interruptions += 1
     @pomodoro.save
   end
+
+  def statistics
+    success = Pomodoro.where(:user_id=>current_user.id, :success=>true).count
+    total = Pomodoro.where(:user_id=>current_user.id).count
+    failures = total - success
+
+    lc = GoogleChart::PieChart.new('380x200', "All Time (#{help.pluralize(total, "pomodoro")})", true) do |pc|
+      pc.data t("success"), success, '00ff00'
+      pc.data t("failures"), failures, 'ff0000'
+    end
+    @all_time_graph = lc.to_url
+
+  end
+
 
 private
   def require_login
