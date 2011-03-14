@@ -20,3 +20,38 @@ td {
 .pagination a:active { border: 1px solid @pagination-color; color: #000; }
 .pagination span.current { padding: @pagination-padding; margin: 2px; border: 1px solid @pagination-color; font-weight: bold; background-color: @pagination-color; color: #FFF; }
 .pagination span.disabled { padding: @pagination-padding; margin: 2px; border: 1px solid #eee; color: #ddd; }
+
+
+.menu {
+  height: 37px;
+  font-size: 18px;
+}
+
+ul.tabs {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.tabs li {
+  float: left;
+  padding: 0;
+  margin: 0;
+  padding-top: 0;
+  margin-right: 1px;
+}
+
+ul.tabs li a {
+  display: block;
+  padding: 0px 10px;
+  text-decoration: none;
+  background-color: #ccc;
+}
+
+ul.tabs li.selected a {
+  background-color: #888;
+}
+
+ul.tabs li a:hover {
+  color: #77E;
+}
