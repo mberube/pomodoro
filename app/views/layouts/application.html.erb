@@ -1,49 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Pomodoro Assistant</title>
-  <%= javascript_include_tag :defaults %>
-  <%= javascript_include_tag 'jquery-cookie' %>
-  <%= javascript_include_tag('pomodoro/init_timezone.js') %>
+  <head>
+    <title>Pomodoro Assistant</title>
+    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag 'jquery-cookie' %>
+    <%= javascript_include_tag('pomodoro/init_timezone.js') %>
 
-  <link rel="stylesheet/less" href="/stylesheets/pomodoro-assistant.less" type="text/css">
+    <link rel="stylesheet/less" href="/stylesheets/pomodoro-assistant.less" type="text/css">
 
-  <%= csrf_meta_tag %>
-  <%= yield :head %>
-  <%= javascript_include_tag "less-1.0.36.min.js" %>
-</head>
-<body>
+    <%= csrf_meta_tag %>
+    <%= yield :head %>
+    <%= javascript_include_tag "less-1.0.36.min.js" %>
+  </head>
+  <body>
+    <% [:info, :error].each do |key| %>
+       <% if flash[key] %>
+       <div class="<%= key %>" id="flash">
+         <%= flash[key] %>
+       </div>
+       <% end %>
+     <% end %>
 
-<% [:info, :error].each do |key| %>
-   <% if flash[key] %>
-   <div class="<%= key %>" id="flash">
-     <%= flash[key] %>
-   </div>
-   <% end %>
- <% end %>
+    <div id="content-box">
+      <div id="header">
+        <div id="logo">
+          <h1>Pomodoro Assistant</h1>
+          <div id="caption">
+            <h2>Organize your time 25 minutes at a time</h2>
+          </div>
+        </div>
+        <% if signed_in? %>
+            <div id="menu">
+              Welcome <%= link_to current_user.name, pomodoros_url %>
+              <br/><%= link_to "Logout", '/logout' %>
+            </div>
+        <% end %>
 
-<div id="content-box">
-  <div id="header">
-    <div id="logo">
-      <h1>Pomodoro Assistant</h1>
-      <div id="caption">
-        <h2>Organize your time 25 minutes at a time</h2>
+      </div>
+      <%= yield %>
+
+      <div id="footer">
+        This application was made for fun, no garantees but if you see something wrong, <%= link_to "notify us", "mailto:pomodoro-assistant@gmail.com"%>
       </div>
     </div>
-    <% if signed_in? %>
-        <div id="menu">
-          Welcome <%= link_to current_user.name, pomodoros_url %>
-          <br/><%= link_to "Logout", '/logout' %>
-        </div>
-    <% end %>
-
-  </div>
-  <%= yield %>
-
-  <div id="footer">
-    This application was made for fun, no garantees but if you see something wrong, <%= link_to "notify us", "mailto:pomodoro-assistant@gmail.com"%>
-  </div>
-</div>
-
-</body>
+  </body>
 </html>
