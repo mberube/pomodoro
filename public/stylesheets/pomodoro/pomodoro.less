@@ -1,3 +1,4 @@
+@import "../lib.less";
 @table-color: #D1DBD8;
 
 td {
@@ -29,15 +30,11 @@ td {
 
 ul.tabs {
   list-style-type: none;
-  padding: 0;
-  margin: 0;
+  padding-top: 2px;
 }
 
 ul.tabs li {
   float: left;
-  padding: 0;
-  margin: 0;
-  padding-top: 0;
   margin-right: 1px;
 }
 
@@ -45,13 +42,14 @@ ul.tabs li a {
   display: block;
   padding: 0px 10px;
   text-decoration: none;
-  background-color: #ccc;
+  background-color: @light;
 }
 
 ul.tabs li.selected a {
-  background-color: #888;
+  background-color: @primary;
+  color: white;
 }
 
 ul.tabs li a:hover {
-  color: #77E;
+  color: white;
 }

@@ -1,3 +1,5 @@
+@import "lib.less";
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -48,6 +50,7 @@ table {
 
 .title-font {
   font-family: serif;
+  color: white;
 }
 
 h1 {
@@ -60,8 +63,15 @@ h2 {
     .title-font
 }
 
+
 #logo {
   float: left;
+}
+
+#title {
+  float: left;
+  padding-top: 10px;
+  padding-left: 5px;
 }
 
 #caption {
@@ -71,9 +81,14 @@ h2 {
 #menu {
     float:right;
     text-align: right;
+    color: white;
 }
 
-#content-box {
+#menu a {
+  color: white;
+}
+
+.content-box {
     width: 960px;
     margin: auto;
 }
@@ -84,6 +99,7 @@ h2 {
     margin: auto;
     position: relative;
     height: 70px;
+    background-color: @dark;
 }
 
 #footer {
