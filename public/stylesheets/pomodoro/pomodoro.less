@@ -1,12 +1,20 @@
 @import "../lib.less";
 @table-color: #D1DBD8;
+@table-padding: 10px;
+th {
+  padding-right: @table-padding;
+  padding-left: @table-padding;
+}
 
 td {
-  border-right: 1px solid @table-color;
-	//border-bottom: 1px solid @table_color;
-	border-top: 1px solid @table-color;
-  padding-left: 1em;
-  padding-right: 1em;
+  border: 1px solid @table-color;
+  padding-left: @table-padding;
+  padding-right: @table-padding;
+  padding-top: 1px;
+  padding-bottom: 2px;
+  vertical-align: middle;
+  text-align: center;
+  border-collapse: collapse;
 }
 
 #start {
