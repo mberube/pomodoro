@@ -1,11 +1,20 @@
+@import "../lib.less";
 @table-color: #D1DBD8;
+@table-padding: 10px;
+th {
+  padding-right: @table-padding;
+  padding-left: @table-padding;
+}
 
 td {
-    border-right: 1px solid @table-color;
-	//border-bottom: 1px solid @table_color;
-	border-top: 1px solid @table-color;
-    padding-left: 1em;
-    padding-right: 1em;
+  border: 1px solid @table-color;
+  padding-left: @table-padding;
+  padding-right: @table-padding;
+  padding-top: 1px;
+  padding-bottom: 2px;
+  vertical-align: middle;
+  text-align: center;
+  border-collapse: collapse;
 }
 
 #start {
@@ -20,3 +29,35 @@ td {
 .pagination a:active { border: 1px solid @pagination-color; color: #000; }
 .pagination span.current { padding: @pagination-padding; margin: 2px; border: 1px solid @pagination-color; font-weight: bold; background-color: @pagination-color; color: #FFF; }
 .pagination span.disabled { padding: @pagination-padding; margin: 2px; border: 1px solid #eee; color: #ddd; }
+
+
+.menu {
+  height: 37px;
+  font-size: 18px;
+}
+
+ul.tabs {
+  list-style-type: none;
+  padding-top: 2px;
+}
+
+ul.tabs li {
+  float: left;
+  margin-right: 1px;
+}
+
+ul.tabs li a {
+  display: block;
+  padding: 0px 10px;
+  text-decoration: none;
+  background-color: @light;
+}
+
+ul.tabs li.selected a {
+  background-color: @primary;
+  color: white;
+}
+
+ul.tabs li a:hover {
+  color: white;
+}

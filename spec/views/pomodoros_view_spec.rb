@@ -12,10 +12,6 @@ describe 'pomodoros/index.html.haml' do
       rendered.should include(t("pomodoros_not_found"))
     end
 
-    it "should not have statistics" do
-      rendered.should_not include(t("statistics"))
-    end
-
     it "should not have paging" do
       rendered.should_not have_selector("nav[@class='pagination']")
     end

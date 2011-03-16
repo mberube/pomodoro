@@ -1,4 +1,15 @@
+<% content_for(:head) do %>
+  <% stylesheet_link_tag('pomodoro/pomodoro.less', :rel=>'stylesheet/less', :type=>'text/css') %>
+<% end %>
+
+
+<div class="menu">
+  <ul class="tabs">
+    <li><%= link_to t('pomodoros'), pomodoros_url %></li>
+    <li class="selected"><%= link_to t('statistics'), statistics_pomodoros_url %></li>
+  </ul>
+</div>
+
 <div class='statistics'>
   <img src='<%= @all_time_graph %>'/>
 </div>
-<%= link_to 'Back to index', pomodoros_url %>
